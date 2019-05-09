@@ -1,0 +1,11 @@
+Methode par balayage régulier 
+Valeur approchée : 4.615109374999999
+Valeur théorique : 4.61509982054025
+Erreur Relative : 2.0702606923193264e-06
+Nombre de point : 200
+
+Methode par Gradient 1D 
+Valeur approchée : 4.62501250748398
+Valeur théorique : 4.61509982054025
+Erreur Relative : 0.0021478813740089097
+Nombre de point : 200
