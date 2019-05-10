@@ -1,0 +1,14 @@
+Question 7
+
+Je trouve :
+phi(0) = f(xn)
+phi'(0) = (f'(xn))^2
+phi''(0) = ((f'(xn))^2) * f''(xn)
+
+Ce qui done pour dl en t->0 :
+phi(t)=f(xn) +t* f'(xn)^2 + t^2/2 * f''(xn)*f'(xn)^2 + o(t^2)
+
+Donc ca me donne
+1) Si xn<1 : t= -oo
+2) si xn>1 : t=0
+je comprend pas c'est pas possible d'avoir un pas =0 ou = -oo
