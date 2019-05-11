@@ -1,0 +1,8 @@
+Question 3:
+
+grad g_ab = (2x/a, 2y/b, 0)
+grad h  = (-sin(x) * sin(y), cos(x) * cos(y), 0)
+
+Question 4 :
+
+
