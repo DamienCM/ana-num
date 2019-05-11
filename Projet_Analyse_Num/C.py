@@ -70,7 +70,7 @@ def norme(V):
     for xi in V:
         somme_quad += xi ** 2
     return somme_quad ** 0.5
-
+    
 
 P0 = (0, 0)
 P1 = (1, 0)
