@@ -80,3 +80,4 @@ text_file.close()
 def phi(t,xn):
     return f(xn+t*fp(xn))
 
+A=1+1
