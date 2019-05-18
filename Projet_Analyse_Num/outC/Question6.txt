@@ -1,0 +1,3 @@
+Pour h on remarque que la methode gradient pas constant converge vers le sommet assez rapidement (n=0) comme prevu 
+Cependant pour g_ab puisque le point de depart est (0,0) la methode s'arrete instantanement (n=0) alors que le point n'est pas au 'sommet'
+C'est normal, il s'agit d'un point d'equilibre instable grad_g_ab(0,0)=0,0

@@ -1,6 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import os
 
+if not os.path.isdir("outB"):
+    os.mkdir("outB")
 
 def f(x):
     return x ** 3 - 3 * x ** 2 + 2 * x + 5

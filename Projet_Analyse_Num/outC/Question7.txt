@@ -1,0 +1,2 @@
+Interpretation : 
+Un pas trop faible implique que l'on peut ne pas forcement arriver à la solution avant les 120 iterations 
