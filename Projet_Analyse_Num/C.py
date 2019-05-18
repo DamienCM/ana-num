@@ -229,6 +229,7 @@ fig_q7.savefig('./outC/Q7.png')
 file = open('./outC/Question7.txt','w')
 file.write("Interpretation : \n"
            "Un pas trop faible implique que l'on peut ne pas forcement arriver à la solution avant les 120 iterations \n"
+           "Avec un pas trop grand on 'jongle' autour de la solution sans jamais sans rapprocher suffisament \n"
            )
 file.close()
 # endregion question 7

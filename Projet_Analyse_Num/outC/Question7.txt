@@ -1,2 +1,3 @@
 Interpretation : 
 Un pas trop faible implique que l'on peut ne pas forcement arriver à la solution avant les 120 iterations 
+Avec un pas trop grand on 'jongle' autour de la solution sans jamais sans rapprocher suffisament 
