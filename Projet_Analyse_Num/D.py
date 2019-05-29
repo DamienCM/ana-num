@@ -1,20 +1,21 @@
 import numpy as np
 
-A = np.array([[3,5],[5,3]])
 
-def G(y, b):
-    return 2 * (A * y - b)
 
-def GradMat(y, b,n):
+def G(A,y0, b):
+    return 2 * (A * y0 - b)
+
+def GradMat(A, y0, b, n):
     i = 0
     while i < n:
-        if nozero(G(y, b)):
-            ro = (Norme(G(y,b)) ** 2)/ (2 * G(y, b).T * A * G(y, b))
+        if nozero(G(A,y0, b)):
+            ro = (Norme(G(A,y0,b)) ** 2)/ (2 * G(A,y0, b).T * A * G(A,y0, b))
+            print(ro)
         else:
             ro = 0
-        y = y - ro * G(y,b)
+        y0 = y0 - ro * G(A,y0,b)
         i += 1
-    return y
+    return y0
 
 
 def Norme(M):
@@ -27,17 +28,15 @@ def Norme(M):
 
 def nozero(M):
     taille = M.shape[0]
-    s = 0
     for i in range(taille):
         for j in range(taille):
             if M[i][j] == 0:
                 return False
-            else:
-                return True
+    return True
 
 
-def phi(y,b):
+def phi(A,y,b):
     return y.T * A * y - 2 * y.T * b
-print(GradMat(np.array([[1,2],[2,3]]),np.array([1,1]),5))
+print(GradMat(np.array([[4,1],[1,8]]),np.array([2,1]),np.array([1,2]),10))
 
 
