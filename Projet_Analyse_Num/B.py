@@ -3,24 +3,24 @@ import matplotlib.pyplot as plt
 import os
 
 if not os.path.isdir("outB"):
-    os.mkdir("outB")
+	os.mkdir("outB")
 
 def f(x):
-    return x ** 3 - 3 * x ** 2 + 2 * x + 5
+	return x ** 3 - 3 * x ** 2 + 2 * x + 5
 
 
 def balayage(a, b, N):
-    X = np.linspace(a, b, N + 1)
-    Y = f(X)
-    return min(Y)
+	X = np.linspace(a, b, N + 1)
+	Y = f(X)
+	return min(Y)
 
 
 def aleatoire(a, b, N):
-    X = np.random.rand(N + 1)
-    X = (b - a) * X
-    X = X + a
-    Y = f(X)
-    return min(Y)
+	X = np.random.rand(N + 1)
+	X = (b - a) * X
+	X = X + a
+	Y = f(X)
+	return min(Y)
 
 
 N = 200
@@ -31,11 +31,11 @@ X = np.arange(10, N, 1)
 ecarts_balayage = []
 
 for i in X:
-    ecarts_balayage.append(abs(valeur_theorique - balayage(a, b, i)) / valeur_theorique)
+	ecarts_balayage.append(abs(valeur_theorique - balayage(a, b, i)) / valeur_theorique)
 
 ecarts_aleatoire = []
 for i in X:
-    ecarts_aleatoire.append(abs(valeur_theorique - aleatoire(a, b, i)) / valeur_theorique)
+	ecarts_aleatoire.append(abs(valeur_theorique - aleatoire(a, b, i)) / valeur_theorique)
 
 plt.plot(X, ecarts_aleatoire, label='Aleatoire')
 plt.plot(X, ecarts_balayage, label='Balayage')
@@ -60,13 +60,13 @@ text_file.write(txt)
 text_file.close()
 
 def fp(x):
-    return 3 * x ** 2 - 6 * x + 2
+	return 3 * x ** 2 - 6 * x + 2
 
 
 def gradient_1D(xo, n, dt=10 ** -6):
-    for i in range(n):
-        xo = xo + dt * fp(xo)
-    return f(xo)
+	for i in range(n):
+		xo = xo + dt * fp(xo)
+	return f(xo)
 
 valeur_approchee = gradient_1D(1.5,N)
 
@@ -81,5 +81,5 @@ text_file.close()
 
 
 def phi(t,xn):
-    return f(xn+t*fp(xn))
+	return f(xn+t*fp(xn))
 
