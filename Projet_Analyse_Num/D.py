@@ -1,25 +1,60 @@
 import numpy as np
 
-A = np.array([[1,4],[3,4]])
 
-def G(y, b):
-    return 2 * (A * y - b)
+def G(A,y0, b):
+    return 2 * (A * y0 - b)
 
-def GradMat(y, b,n):
-    i = 0
-    while i < n:
-        if G(y, b).any != 0:
-            ro = (NormeMat(y) ** 2) / (2 * G(y, b).T * A * G(y, b))
-        else:
-            ro = 0
-        y = y - ro * G(y,b)
-        i += 1
-    return y
 
-def NormeMat(M):
+
+
+def NormeMatrice(M):
+    taille=M.shape[0]
+    s = 0
+    for i in range(taille):
+        for j in range(taille):
+            s = s + M[i][j]**2
+    return np.sqrt(s)
+
+def norme(M):
     return np.linalg.norm(M)
 
-def phi(y,b):
+def nozero(M):
+    taille = M.shape[0]
+    for i in range(taille):
+        for j in range(taille):
+            if M[i][j] == 0:
+                return False
+    return True
+
+
+
+def phi(A,y,b):
     return y.T * A * y - 2 * y.T * b
 
-print(GradMat([5,8],[2,4],10))
+
+
+
+def gradopt(A,b,y0,eps,m):
+    n = 0
+    g = 2*(A*y0-b)
+    ro=(norme(g)**2)/(2*(g.transpose())*A*g)
+    y1 = y0 - ro*g
+    while(n<m and norme(y1-y0)>=eps):
+        y0=y1
+        g=2*(A*y0-b)
+        if(nozero(g)):
+            ro = ro=(norme(g)**2)/(2*g.T*A*g)
+        else:
+            ro=0
+        y1=y0-ro*g
+        n = n + 1
+    return y1
+
+print(gradopt(np.array([[2,1],[1,2]]),np.array([1,2]),np.array([0,1]),0.0000001,10))
+
+
+
+
+
+
+
