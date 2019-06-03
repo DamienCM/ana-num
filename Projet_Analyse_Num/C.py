@@ -94,7 +94,7 @@ def norme(V):
 
 
 # endregion question 3
-
+print("norme", norme(grad_h(1, 1)))
 
 # region question 4
 P0 = (0, 0)
@@ -118,9 +118,8 @@ file.close()
 
 
 # region question 5
-def grad_pc(eps, m, u, xo, yo,
-			df):  # methode pas amelioree j'ai pas compris a quoi conrespondais les entrees
-	# je suppose df1,df2=df[0],df[1] = grad f
+
+def grad_pc(eps, m, u, xo, yo, df):
 	n = 0
 	X = [xo]
 	Y = [yo]
@@ -132,7 +131,6 @@ def grad_pc(eps, m, u, xo, yo,
 		X.append(xo)
 		Y.append(yo)
 	return n, np.array(X), np.array(Y)
-
 
 # endregion question 5
 
@@ -192,14 +190,16 @@ fig_g.legend()
 Ph = (7, 1.5)
 n_h, X, Y = grad_pc(0.1, 100, 0.1, Ph[0], Ph[1], grad_h)
 Z = h(X, Y)
-ax_h.plot(X, Y, Z, color='black', linewidth=3, label="n=" + str(n_h))
 fig_h.legend()
 
+for i in range(len(Z)):
+	ax_h.plot(X[:i], Y[:i], Z[:i], color='black', linewidth=3, label="n=" + str(n_h))
+	fig_h.savefig('./outC/Q6h'+str(i)+'.png')
+
 fig_g.savefig('./outC/Q6g.png')
-fig_h.savefig('./outC/Q6h.png')
 file = open('./outC/Question6.txt', 'w')
 file.write("Pour h on remarque que la methode gradient pas constant converge vers le sommet assez rapidement (n=" + str(
-	n_g) + ") comme prevu \n"
+	n_h) + ") comme prevu \n"
 		   "Cependant pour g_ab puisque le point de depart est (0,0) la methode s'arrete instantanement (n=" + str(
 	n_g) + ") alors que le point n'est pas au 'sommet'\n"
 		   "C'est normal, il s'agit d'un point d'equilibre instable grad_g_ab(0,0)=0,0")
@@ -218,7 +218,7 @@ m = 120
 # On part su point suivant
 xo, yo = (-4, 4)
 
-U = np.linspace(-0.99, -0.001, 500)
+U = np.linspace(-0.99, -0.001, 100)
 for u in U:
 	_, X, Y = grad_pc(eps, m, u, xo, yo, grad_g_ab)
 	Z = g_ab(X, Y)
@@ -240,6 +240,7 @@ file.close()
 
 
 # region question 8
+
 def gradamax(eps, m, u, xo, yo, f, df):
 	n = 0
 	x, y = xo, yo
@@ -294,16 +295,16 @@ file.close()
 a, b = 1, 20
 xo, yo = -4, 4  # on part du point suivant
 
-U = np.linspace(-0.999, 0.001, 10 ** 3)
+U = np.linspace(-0.999, 0.001, 100)
 eps = 10 ** -5
 ecarts_grada = []
 ecarts_gradpc = []
-n_max = 10000
+n_max = 1000
 
 for u in U:
 	ecarts_grada.append(gradamin(eps, n_max, -u, xo, yo, g_ab, grad_g_ab)[0])
 	ecarts_gradpc.append(grad_pc(eps, n_max, u, xo, yo, grad_g_ab)[0])
-
+print('index',U[ecarts_grada.index(min(ecarts_grada))])
 fig_q9 = plt.figure()
 ax_q9 = fig_q9.gca()
 
