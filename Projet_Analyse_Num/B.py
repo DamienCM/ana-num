@@ -23,6 +23,8 @@ def aleatoire(a, b, N):
 	return min(Y)
 
 
+
+
 N = 200
 a, b = 0, 3
 valeur_theorique = 5 - 2 / (3 * 3 ** 0.5)
@@ -63,10 +65,14 @@ def fp(x):
 	return 3 * x ** 2 - 6 * x + 2
 
 
+
 def gradient_1D(xo, n, dt=10 ** -6):
 	for i in range(n):
 		xo = xo + dt * fp(xo)
-	return f(xo)
+		return f(xo)
+
+
+
 
 valeur_approchee = gradient_1D(1.5,N)
 
